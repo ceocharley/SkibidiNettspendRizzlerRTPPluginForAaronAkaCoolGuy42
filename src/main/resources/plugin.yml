@@ -1,0 +1,7 @@
+name: SkibidiNettspendRizzlerRTPPluginForAaronAkaCoolGuy42
+version: '${project.version}'
+main: me.charles.skibidinettspendrizzlerrtppluginforaaronakacoolguy42.SkibidiNettspendRizzlerRTPPluginForAaronAkaCoolGuy42
+api-version: '1.21'
+authors: [charles2222]
+description: a plugin that randomly teleports you to a location between 3000 and 7500 when you join and is sigma.
+website: charley.wtf
