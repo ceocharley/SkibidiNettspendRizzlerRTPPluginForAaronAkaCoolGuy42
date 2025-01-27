@@ -12,8 +12,7 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         // check if it's the player's first join
         if (!e.getPlayer().hasPlayedBefore()) {
-            // ensure at least one other player is online
-            if (Bukkit.getOnlinePlayers().size() > 1) {
+
                 // get the "world" and ensure it's not null
                 World world = Bukkit.getWorld("world");
                 if (world == null) {
@@ -27,11 +26,17 @@ public class JoinListener implements Listener {
 
                 // find a safe location to teleport
                 Location safeLocation = world.getHighestBlockAt(x, z).getLocation().add(0.5, 1, 0.5);
+
+//                if its in water, find a new location
+                while (safeLocation.getBlock().isLiquid()) {
+                    x = (int) (Math.random() * 6001) - 3000;
+                    z = (int) (Math.random() * 6001) - 3000;
+                    safeLocation = world.getHighestBlockAt(x, z).getLocation().add(0.5, 1, 0.5);
+                }
                 e.getPlayer().teleport(safeLocation);
 
                 // set their spawn point to where they were teleported
                 e.getPlayer().setBedSpawnLocation(safeLocation, true);
-            }
         }
     }
 }
